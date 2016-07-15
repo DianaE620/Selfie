@@ -1,0 +1,25 @@
+
+<div class="gallery_container">
+<div>Bienvenido a tu Galeria de fotos</div>
+<br><br>
+<div>Fotos de Perfil</div>
+<ul class="sortable">
+  <% @photos_profile.each do |p| %>
+    <li class="ui-state-default"><img src="<%= p.photo_url(:thumb) %>"></li>
+  <% end %>
+</ul>
+
+<br clear="both">
+<br><br>
+
+<div>Ver fotos de tu album</div>
+<ul class="sortable">
+  <% @photos_album.each do |p| %>
+    <li class="ui-state-default"><img src="<%= p.photo_url(:thumb) %>"></li>
+  <% end %>
+</ul>
+
+
+<br clear="both">
+
+</div>

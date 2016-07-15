@@ -1,0 +1,19 @@
+<!-- Verificar que sea post, y que tenga el atributo enctype-->
+<form method="post" enctype='multipart/form-data' action="upload">
+  <!--Verificar que name corresponda al nombre/campo del modelo-->
+  <input type='file' name='photo[photo]'>
+  <br/>
+  <input type='submit' value='Upload!'>
+</form>
+
+<h2> Ultimas fotos </h2>
+
+<% if @photos %>
+<ul>
+  <% @photos.each do |photo| %>
+    <div> 
+      <img src="<%= photo.photo_url(:thumb) %>">
+    </div>
+  <% end %>
+</ul>
+<% end %>

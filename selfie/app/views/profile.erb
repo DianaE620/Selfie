@@ -1,0 +1,88 @@
+<br><br>
+<div class="welcome">Bienvenido a tu perfil: <%= @user.name %>
+</div>
+<br><br>
+
+<% if @profile_photo == 0 %>
+
+<div class="container_photo">
+  <div class="profile_photo" style="background: url(https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg); background-size: cover; background-position:top center;"></div>
+</div>
+
+<% end %>
+
+<% if @profile_photo == 1 %>
+
+<div class="container_photo">
+  <div class="profile_photo" style="background: url(<%= @photo.photo_url(:thumb) %>); background-size: cover; background-position:top center;"></div>
+</div>
+
+<% end %>
+<br>
+<div> Cambiar foto de Perfil </div>
+<br>
+
+<form method="post" enctype='multipart/form-data' action="/upload/profile">
+  <!--Verificar que name corresponda al nombre/campo del modelo-->
+  <input type='file' name='photo[photo]'>
+  <br><br>
+  <input type='hidden' value='<%= @user.id %>' name="id">
+  <input type='submit' value='Upload!'>
+</form>
+
+
+<br><br>
+
+<% if @album == 0 %>
+  <div>Crear un album</div><br>
+
+  <form method="post" enctype='multipart/form-data' action="/upload/album">
+  <!--Verificar que name corresponda al nombre/campo del modelo-->
+  <input type='file' name='photo[photo]'>
+  <br><br>
+  <input type='hidden' value='<%= @user.id %>' name="id">
+  <input type='submit' value='Upload!'>
+  </form>
+
+<% end %>
+
+<% if @album == 1 %>
+
+  <div>Agregar fotos a la Galeria</div>
+<br>
+  <form method="post" enctype='multipart/form-data' action="/upload/album">
+  <!--Verificar que name corresponda al nombre/campo del modelo-->
+  <input type='file' name='photo[photo]'>
+  <br><br>
+  <input type='hidden' value='<%= @user.id %>' name="id">
+  <input type='submit' value='Upload!'>
+</form>
+
+
+<br><br>
+<div class="carousel">
+<ul class="frames">
+  <% @album_photos.each do |p| %>
+    <li><img src="<%= p.photo_url(:thumb) %>" style="width:100%; height:auto;"></li>
+  <% end %>
+</ul>
+</div>
+
+<% end %>
+
+<br><br>
+<a href="/gallery/<%= @user.id %>">Ir Galeria</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

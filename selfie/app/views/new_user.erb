@@ -1,0 +1,23 @@
+<div class="form_container">
+  
+  <form action="/user/new" method="post">
+
+  Nombre:
+  <input type="text" placeholder="Ingresa tu nombre"  name="nombre">
+  <br><br>
+  Correo:
+  <input type="text" placeholder="Ingresa tu correo" name="correo">
+  <br><br>
+  Contraseña:
+  <input type="password" placeholder="Ingresa tu contraseña" name="password">
+  
+  <br><br><br>
+  <button>Registrarme</button>
+  
+  </form>
+  <br><br>
+  <%if @error %>
+  <div class="error">Error alguno de los datos no es correcto. Intentalo de nuevo.</div>
+  <% end %>
+  
+</div>
